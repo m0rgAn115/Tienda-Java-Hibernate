@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+		  >
+		<persistence-unit name="tienda1" transaction-type="RESOURCE_LOCAL">
+		
+		
+		//SI NO SE COLOCA ESTE COMANDO HIBERNATE MAPEARA TODAS LAS ENTIDADES QUE TENGAN @ENTITY
+		<class>com.morgan.tienda.modelo.Producto</class> //Aqui declaramos cuales entidades van a ser mapeadas en nuestra base de datos
+		
+			<properties>
+				<property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/> //Driver de nuestra base de datos
+				<property name="javax.persistence.jdbc.url" value="jdbc:h2:men:tienda"/>//La url de donde esta ubicada nuestra base de datos
+				<property name="javax.persistence.jdbc.user" value="sa"/>
+				<property name="javax.persistence.jdbc.password" value=""/>
+			
+				<property name="hibernate.show_sql" value="true"/>//Nos permite ver los registros guardados
+				<property name="hibernate.format_sql" value="true"/>//Muestra las operaciones de la base de datos con formato en la consola
+				
+				<property name="hibernate.hbm2ddl.auto" value="update"/>    ----> Para esta propiedad tenemos varios valores
+				create(Crea las tablas y al finalizar el programa permanecen guardadas)
+				create-drop(Crea la tabla pero al finalizar el programa borra las tablas)
+				validate(nos ayuda a saber que toda la informacion y las tablas esten bien, solo es para consultas)
+				update(crea las tablas en caso de que no esten creadas y si lo estan actualiza los valores en ellas)
+				
+				<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+			</properties>
+			
+		</persistence-unit>
+</persistence>
